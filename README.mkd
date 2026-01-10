@@ -1,0 +1,18 @@
+# Laura's Python development environment
+
+To use:
+```
+nix develop github:bgamari/laura-python-flake
+```
+
+To add this as a dependency of another project: In your `flake.nix`:
+```nix
+{
+  inputs.laura-python-flake.url = "github:bgamari/laura-python-flake";
+
+  outputs = { self, nixpkgs, laura-python-flake }: {
+    devShells.x86_64-linux.default =
+      laura-python-flake.devShells.x86_64-linux.default;
+  };
+}
+```
