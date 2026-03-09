@@ -34,11 +34,12 @@
               cudaPackages.cudatoolkit
               cudaPackages.cudnn
               nix-gl-host.defaultPackage.${system}
+              zlib
 
               stdenv.cc.cc.lib
             ];
             shellHook = ''
-              export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH"
+              export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH"
             '';
           };
       });
